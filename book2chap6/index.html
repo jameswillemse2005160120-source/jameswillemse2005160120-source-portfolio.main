@@ -1,84 +1,50 @@
 
-body {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-}
-p {
-    font-size: 3em;
-}
-.eye {
-    background-color:rgba(93, 11, 11, 0.351);
-    width:30%;
-    height:30%;
-    border-radius: 50%;
-}
-.rightarm {
-    background-color: #cacaca;
-    position: absolute;
-    top: 35%;
-    width: 5%;
-    height: 40%;
-}
-    .leftarm {
-    background-color: #cacaca;
-    position: absolute;
-    top: 35%;
-    width: 5%;
-    height: 40%;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='bot.css'>
+    <script src='bot.css'></script>
 
-#head {
-    width:30%;
-    height:30%;
-    border-radius: 15%;
-    background-color: #dadada;
-    position: absolute;
-    left: 32%;
-    top: 5%;
-}
-#righteye {
-    position: absolute;
-    left: 20%;
-    top: 20%;
-}
-#lefteye {
-    position: absolute;
-    left: 60%;
-    top: 20%;
-}
-#nose {
-    position: absolute;
-    left: 45%;
-    top: 50%;
-    width: 10%;
-    height: 10%;
-    background-color: black;
-}
-#mouth {
-    position: absolute;
-    width: 65%;
-    height: 15%;
-    left: 20%;
-    top: 70%;
-    background-color: red;
-}
-#body {
-    position: absolute;
-    left: 25%;
-    top: 35%;
-    width: 45%;
-    height: 55%;
-    background-color: #dadada;
-    text-align:center;
-    padding-top: 30px;
-}
+    
+</head>
+<body>
+    
 
-#rightarm {
-    position:absolute;
-    left:20%;
-}
-#leftarm {
-    position: absolute;
-    left: 70%;
-    width: 30%;
-    height: 7%;
-}
+    <!-- Main container for the robot -->
+<div id="robot">
+
+    <!-- Robot's head section -->
+    <div id="head">
+        <!-- Right eye of the robot -->
+        <div class="eye" id="righteye"></div>
+
+        <!-- Left eye of the robot -->
+        <div class="eye" id="lefteye"></div>
+
+        <!-- Nose of the robot -->
+        <div id="nose"></div>
+
+        <!-- Mouth of the robot -->
+        <div id="mouth"></div>
+    </div>
+
+    <!-- Right arm of the robot -->
+    <div class="arm" id="rightarm"></div>
+
+    <!-- Robot's body section -->
+    <div id="body">
+        <!-- Text message displayed on the body -->
+        <p id="message">like editing moding and upgrading things</p>
+    </div>
+
+    <!-- Left arm of the robot -->
+    <div class="arm" id="leftarm"></div>
+
+</div>
+
+</body>
+</html>
