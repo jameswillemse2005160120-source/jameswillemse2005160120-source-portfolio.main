@@ -1,56 +1,90 @@
+/**************************
+ * 1. GLOBAL DATA
+ **************************/
 var nums = [1, 2, 3, 4];
 var items = ["Coke", "Kit Kat", "Bar One", "Fanta"];
 var prices = [7.5, 9.5, 8.5, 7.5];
 var quantities = [0, 0, 0, 0];
 var totals = [0.0, 0.0, 0.0, 0.0];
-var totalOrderAmt = 0;
 
-function add_selection(x) {
-    console.log(x);
-    quantities[x] = quantities[x] + 1;
-    totals[x] = prices[x] * quantities[x];
-    totalOrderAmt += prices[x];
 
+/**************************
+ * 2. MODIFY DATA
+ **************************/
+
+// Add item
+function add_selection(index) {
+    quantities[index]++;
+    totals[index] = prices[index] * quantities[index];
+    display_all();
+}
+
+// Remove item (prevents negatives)
+function remove_selection(index) {
+    if (quantities[index] > 0) {
+        quantities[index]--;
+        totals[index] = prices[index] * quantities[index];
+    }
     display_all();
 }
 
 
- 
+/**************************
+ * 3. CALCULATIONS
+ **************************/
 
+// Checkout total
+function checkout() {
+    let grandTotal = 0;
+
+    for (let i = 0; i < totals.length; i++) {
+        grandTotal += totals[i];
+    }
+
+    document.getElementById("grandTotal").innerHTML =
+        "Total Order Amount: R " + grandTotal.toFixed(2);
+}
+
+
+/**************************
+ * 4. DISPLAY
+ **************************/
 
 function display_all() {
 
+    let myTable = "<table border='1'>";
+    myTable += "<tr>";
+    myTable += "<th>Num</th>";
+    myTable += "<th>Item</th>";
+    myTable += "<th>Price</th>";
+    myTable += "<th>Quantity</th>";
+    myTable += "<th>Total</th>";
+    myTable += "<th>Add</th>";
+    myTable += "<th>Remove</th>";
+    myTable += "</tr>";
 
-
-    var myTable = "<table><th style='width: 100px; color: red; text-align: right;'>Num</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Item</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Price</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Quantity</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Total</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Add</th>";
-    myTable += "<th style='width: 100px; color: red; text-align: right;'>Add</th>";
-
-    for (i = 0; i < items.length; i++) {
-        myTable += "<tr><td style='width: 100px; text-align: right;'>" + nums[i] + "</td>";
-        myTable += "<td style='width: 100px; text-align: right;'>" + items[i] + "</td><";
-        myTable += "<td style='width: 100px; text-align: right;'>" + prices[i] + "</td>";
-        myTable += "<td style='width: 100px; text-align: right;'>" + quantities[i] + "</td>";
-        myTable += "<td style='width: 100px; text-align: right;'>" + totals[i] + "</td>";
+    for (let i = 0; i < items.length; i++) {
+        myTable += "<tr>";
+        myTable += "<td>" + nums[i] + "</td>";
+        myTable += "<td>" + items[i] + "</td>";
+        myTable += "<td>R " + prices[i].toFixed(2) + "</td>";
+        myTable += "<td>" + quantities[i] + "</td>";
+        myTable += "<td>R " + totals[i].toFixed(2) + "</td>";
         myTable += "<td><button onclick='add_selection(" + i + ")'>Add</button></td>";
-        myTable += "<td><button onclick='add_selection(" + i + ")'>Add</button></td>";
+        myTable += "<td><button onclick='remove_selection(" + i + ")'>Remove</button></td>";
+        myTable += "</tr>";
     }
 
     myTable += "</table>";
-    // myTable += "<br/><br/><p>Total: " + totalOrderAmt + "</p>";
 
-
-
-    // document.write(myTable);
     document.getElementById("demo").innerHTML = myTable;
-
-
 }
 
-window.onload = function() {
+
+/**************************
+ * 5. INITIAL LOAD
+ **************************/
+
+window.onload = function () {
     display_all();
-}
+};
