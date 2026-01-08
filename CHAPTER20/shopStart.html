@@ -58,7 +58,12 @@
         // Dynamically generate JS buttons with onclick handlers
         myTable += "<td><button onclick='add_selection(" + i + ")'>Add</button></td>";
         myTable += "<td><button onclick='remove_selection(" + i + ")'>Remove</button></td>";
-        myTable += "</tr>";
+       <div id="demo"></div>
+
+<br>
+<button onclick="checkout()">Checkout</button>
+<p id="grandTotal" style="font-weight:bold;"></p>
+
       }
 
       myTable += "</table>";
@@ -73,3 +78,4 @@
   </script>
 </body>
 </html>
+
